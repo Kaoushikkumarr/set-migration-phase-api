@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "0b5eae13-239c-4efa-9c28-edf54c8e4614",
+		"name": "Migration Phase",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Local",
+			"item": [
+				{
+					"name": "POST -- /phase-table",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"step_id\": 2,\n    \"name\": \"Dev Data Movement\",\n    \"description\": \"Dev Data Movement Testing 1\",\n    \"orders\": 2,\n    \"is_optional\": false,\n    \"parent_step_id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/v1/phase-table?step_id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"phase-table"
+							],
+							"query": [
+								{
+									"key": "step_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST -- /process-table",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"step_id\": 2,\n    \"entity_id\": 2,\n    \"is_successful\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/v1/process-table?step_id=1&entity_id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"process-table"
+							],
+							"query": [
+								{
+									"key": "step_id",
+									"value": "1"
+								},
+								{
+									"key": "entity_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST -- /entity-table",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"entity_id\": 2,\n    \"application_name\": \"striim\",\n    \"source_server\": \"MSSQL\",\n    \"source_database\": \"adventure-works-2019\",\n    \"target_server\": \"Postgres\",\n    \"target_database\": \"postgres\",\n    \"is_spdb\": false,\n    \"migrator\": \"In-progress\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/v1/entity-table?entity_id=2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"entity-table"
+							],
+							"query": [
+								{
+									"key": "entity_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST -- /entity-object-table",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"entity_id\": 1,\n    \"object_id\": 1,\n    \"name\": \"PostgreSQL\",\n    \"size_in_mb\": 30\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/v1/entity-object-table",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"entity-object-table"
+							],
+							"query": [
+								{
+									"key": "object_id",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cloud-Run-Server",
+			"item": [
+				{
+					"name": "GET -- /health-check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://phases-b6a7nx5zsq-uc.a.run.app/health-check",
+							"protocol": "https",
+							"host": [
+								"phases-b6a7nx5zsq-uc",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"health-check"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
